@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+
+
+
+<!-- 通过构造函数的依赖注入，完成单个构造参数的注入 -->
+    <bean id="UserDao1" class="cn.wangye.UserDao"></bean>
+
+    <bean id="UserService" class="cn.wangye.UserService">
+        <constructor-arg ref="UserDao1"></constructor-arg>
+    </bean>
+
+<!--  基于构造函数的依赖注入，多构造参数解析  -->
+    <bean id="UserDao2" class="cn.wangye.UserDao"></bean>
+    <bean id="UserServiceUp1" class="cn.wangye.UserServiceUp">
+        <constructor-arg value="21"></constructor-arg>
+        <constructor-arg value="wang"></constructor-arg>
+        <constructor-arg ref="UserDao2"></constructor-arg>
+    </bean>
+
+
+    <bean id="UserDao3" class="cn.wangye.UserDao"></bean>
+    <bean id="UserServiceUp2" class="cn.wangye.UserServiceUp">
+        <constructor-arg name="userDao" ref="UserDao3"></constructor-arg>
+        <constructor-arg name="age" value="21"></constructor-arg>
+        <constructor-arg name="name" value="wang"></constructor-arg>
+    </bean>
+
+    <bean id="MovieFinder" class="cn.wangye.MovieFinder"/>
+    <bean id="SimpleMovieLister" class="cn.wangye.SimpleMovieLister">
+        <property name="movieName" value="大秦帝国"></property>
+        <property name="movieFinder" ref="MovieFinder"></property>
+    </bean>
+
+
+
+</beans>
