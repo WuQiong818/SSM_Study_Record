@@ -172,22 +172,7 @@ public class test01 {
     //批量插入数据
     @Test
     public void test10() {
-//        Employee w = new Employee("z", 1100.0);
-//        Employee a = new Employee("h", 2100.0);
-//        Employee n = new Employee("a", 3100.0);
-//        Employee g = new Employee("n", 41000.0);
-//        w.setEmpId(3);
-//        a.setEmpId(4);
-//        n.setEmpId(6);
-//        g.setEmpId(18);
-//        List<Employee> list = new ArrayList<>();
-//        list.add(w);
-//        list.add(a);
-//        list.add(n);
-//        list.add(g);
         EmployeeMapper mapper = session.getMapper(EmployeeMapper.class);
-//        int count = mapper.updateBatch(list);
-//        System.out.println("count="+count);
         List<Integer> nums = new ArrayList<>();
         nums.add(3);
         nums.add(4);
