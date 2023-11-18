@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="person" class="cn.wangye.ioc05.PersonFactory">
+<!--    在这里面我们配置的参数是传给PersonFactory类的,因此如果我们想要生产自定义的产品，我们需要在给类中设置get、set方法，进行参数的接收
+    参数中的名字是set方法的名字去掉set和第一个字母变成小写
+    -->
+        <property name="name" value="xiaoAi"></property>
+        <property name="gender" value="female"></property>
+    </bean>
+</beans>

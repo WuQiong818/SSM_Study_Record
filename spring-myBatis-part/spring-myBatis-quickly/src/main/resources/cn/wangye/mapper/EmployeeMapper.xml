@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace等于mapper接口类的全限定名,这样实现对应。 一个mapper标签对应着一个mapper接口 -->
+<mapper namespace="cn.wangye.mapper.EmployeeMapper">
+    <!-- 查询使用 select标签
+            id = 方法名
+            resultType = 返回值类型
+            标签内编写SQL语句
+     -->
+    <!-- 是类名，不是class类 -->
+    <select id="selectEmployee" resultType="cn.wangye.pojo.Employee">
+        <!-- #{empId}代表动态传入的参数,并且进行赋值!后面详细讲解 -->
+        select emp_id empId,emp_name empName, emp_salary empSalary from
+        t_emp where emp_id = #{empId}
+    </select>
+
+    <!-- 在使用插入是返回的是一个int类型的整数，不需要配置返回结果，因为int是简单类型的-->
+    <!--  每一个映射文件中的 实体对象的参数，是通过getter方法获取的，不是通过成员变量获取的，mybatis会自动读取我们的pojo对象，调用其中的getter方法；  -->
+    <!--    useGeneratedKeys="true" //是否想要数据库自动增强的主键值
+            keyColumn="emp_id"//主键列的值！！！
+            keyProperty="empId"//接收主键列值的属性，我们定义的对象中，谁进行接收返回的id值
+            -->
+    <insert id="insertEmployee" useGeneratedKeys="true" keyColumn="emp_id" keyProperty="empId">
+        insert into t_emp (emp_name, emp_salary)values (#{empName11},#{empSalary})
+    </insert>
+
+    <!--  <insert id="insertNoAutocommitEmployee" >
+          <selectKey keyProperty="id" resultType="String" order="BEFORE">
+              SELECT UUID() as id
+          </selectKey>
+          insert into t_empvalues (#{empName},#{empSalary})
+
+      </insert>-->
+
+    <!-- Map<String,Object> selectEmpNameAndMaxSalary(); -->
+
+    <!-- 返回工资最高的员工的姓名和他的工资 -->
+
+    <select id="selectEmpNameAndMaxSalary" resultType="map">
+        SELECT
+        emp_name 员工姓名,
+        emp_salary 员工工资,
+        (SELECT AVG(emp_salary) FROM t_emp) 部门平均工资
+        FROM t_emp WHERE emp_salary=(
+        SELECT MAX(emp_salary) FROM t_emp
+        )
+    </select>
+    <!--  =++++++++++++++++++++++++++++++++++++++=  -->
+    <!-- 测试动态SQL语句: -->
+    <!-- where_if   -->
+    <!-- List<Employee> selectEmployeeByCondition(Employee employee); -->
+    <select id="replace_selectEmployeeByCondition" resultType="cn.wangye.pojo.Employee">
+        select emp_id,emp_name,emp_salary from t_emp
+        <!-- where 标签会自动去掉标签内前面多余的and/or -->
+        <where>
+            <if test="empName != null">
+                or emp_name = #{empName}
+            </if>
+            <if test="empSalary &gt; 2000">
+                or emp_salary > #{empSalary}
+            </if>
+        </where>
+    </select>
+
+<!--  trim_if 相比于where 更加地灵活，测试 -->
+    <select id="selectEmployeeByCondition" resultType="cn.wangye.pojo.Employee">
+        select emp_id,emp_name,emp_salary from t_emp
+        <!--            where 标签会自动去掉标签内前面多余的and/or-->
+        <trim prefix="where" prefixOverrides="and|or">
+            <if test="empName != null">
+                or emp_name = #{empName}
+            </if>
+            <if test="empSalary &gt; 2000">
+                or emp_salary > #{empSalary}
+            </if>
+        </trim>
+    </select>
+
+    <!--  动态修改员工姓名和工资  -->
+    <!--void updateEmployeeDynamic(Employee employee)-->
+    <update id="updateEmployeeDynamic">
+        update t_emp
+        <set>
+            <if test="empName != null">
+                emp_name = #{empName},
+            </if>
+            <if test="empSalary &lt; 3000">
+                emp_salary=#{empSalary}
+            </if>
+        </set>
+        where emp_id = #{empId}
+    </update>
+<!--对数据进行批量操作-->
+
+<!--  Sql片段  -->
+    <sql id="mySelectSql">
+        select emp_id,emp_name,emp_salary from t_emp
+    </sql>
+
+
+
+<!--    int insertBatch(@Param("list") List<Employee> list);-->
+        <insert id="insertBatch">
+            insert into t_emp (emp_name, emp_salary)
+                values
+            <foreach collection="list" separator="," item="emp">
+                    (#{emp.empName},#{emp.empSalary})
+            </foreach>
+        </insert>
+
+<!--    int deleteBatch(@Param("ids") List<Integer> ids);-->
+    <delete id="deleteBatch">
+        delete from t_emp where emp_id in 
+        <foreach collection="ids" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+
+<!--    int updateBatch(@Param("list") List<Employee> list);-->
+    <update id="updateBatch">
+        <foreach collection="list" item="emp">
+            update t_emp set emp_name = #{emp.empName},emp_salary=#{emp.empSalary} where emp_id = #{emp.empId};
+        </foreach>
+    </update>
+
+
+<!--    List<Employee> queryBatch(@Param("ids") List<Integer> ids);-->
+    <select id="queryBatch" resultType="cn.wangye.pojo.Employee">
+        <include refid="mySelectSql"/>
+            where emp_id in
+        <foreach collection="ids" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </select>
+
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

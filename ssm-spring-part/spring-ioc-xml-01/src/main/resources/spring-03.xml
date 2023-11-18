@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+
+<!--  组件的信息 ioc配置 ——>applicationContext进行读取 ——>loc容器帮助我们进行组件的实例化操作。  -->
+    <bean id="HappyComponent" class="cn.wangye.ioc03.HappyComponent"></bean>
+<!--    <bean id="HappyComponent111" class="cn.wangye.ioc03.HappyComponent"></bean>-->
+
+</beans>
+
+
+
+

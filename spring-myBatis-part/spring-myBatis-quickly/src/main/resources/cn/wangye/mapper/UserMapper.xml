@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace等于mapper接口类的全限定名,这样实现对应。 一个mapper标签对应着一个mapper接口 -->
+<mapper namespace="cn.wangye.mapper.UserMapper">
+    <insert id="insertUser" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
+        insert into user (username, password) value (#{username},#{password});
+    </insert>
+
+    <insert id="insertUserByString" >
+        insert into user (username, password) value (#{usernameTest},#{passwordTest});
+    </insert>
+
+    <update id="updateById">
+        update user set username = #{username},password=#{password} where id = #{id};
+    </update>
+
+<!--    单独传入一个值，sql语句中接收参数的变量可以随便填写，
+            但是如果传入的是多个值的多，我们就需要进行指定了-->
+    <delete id="deleteById">
+        delete from user where id = #{id};
+    </delete>
+
+    <select id="selectById" resultType="user">
+        select * from user where id = #{id}
+    </select>
+
+    <select id="selectAll" resultType="cn.wangye.pojo.User">
+        select * from user;
+    </select>
+
+
+
+</mapper>
