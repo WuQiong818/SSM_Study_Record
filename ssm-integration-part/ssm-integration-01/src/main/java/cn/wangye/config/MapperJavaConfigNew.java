@@ -1,15 +1,15 @@
 package cn.wangye.config;
 
-import com.alibaba.druid.support.logging.SLF4JImpl;
+
 import com.github.pagehelper.PageInterceptor;
 import org.apache.ibatis.logging.slf4j.Slf4jImpl;
-import org.apache.ibatis.plugin.Interceptor;
+
 import org.apache.ibatis.session.AutoMappingBehavior;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.mapper.MapperScannerConfigurer;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
+
 
 import javax.sql.DataSource;
 import java.util.Properties;
@@ -21,6 +21,7 @@ public class MapperJavaConfigNew {
     //    将sqlSessionFactoryBean加入到ioc容器当中
 //    mybatis -> sqlSessionFactoryBean[ioc] -> getObject() -> sqlSessionFactory
 //    方法一：外部指定mybatis-config.xml[mybatis的配置 除了连接池和mapper的指定]
+    @Bean
     public SqlSessionFactoryBean sqlSessionFactoryBean(DataSource dataSource) {
         //实例化sqlSessionFactoryBean工厂
         SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
@@ -43,26 +44,23 @@ public class MapperJavaConfigNew {
                 </plugin>
              </plugins>
     */
-//配置文件不要慌，结构都是对应着的
+        //配置文件不要慌，结构都是对应着的
         PageInterceptor pageInterceptor = new PageInterceptor();
         Properties properties = new Properties();
-        properties.setProperty("helperDialect", "mysql");
+        properties.setProperty("helperDialect","mysql");
         pageInterceptor.setProperties(properties);
-
-        sqlSessionFactoryBean.addPlugins(pageInterceptor);
-
         return sqlSessionFactoryBean;
     }
 
     //    将Mapper对象配置到ioc容器当中
 //    Mapper代理兑现的factoryBean -> 指定一个包 -> mapper接口 -》 sqlSessionFactory -> sqlSession
 //    -> getMapper -> mapper代理对象[ioc]
+    @Bean
     public MapperScannerConfigurer mapperScannerConfigurer() {
         MapperScannerConfigurer mapperScannerConfigurer = new MapperScannerConfigurer();
 //        配置Mapper接口和xml文件所在的共同包
         mapperScannerConfigurer.setBasePackage("cn.wangye.mapper");
         return mapperScannerConfigurer;
-
     }
 /*<configuration>
     <settings>
@@ -83,7 +81,6 @@ public class MapperJavaConfigNew {
                 （完整内容看 PageAutoDialect） 特别注意：使用 SqlServer2012 数据库时，
     https://github.com/pagehelper/Mybatis-PageHelper/blob/master/wikis/zh/HowToUse.md#%E5%A6%82%E4%BD%95%E9%85%8D%E7%BD%AE%E6%95%B0%E6%8D%AE%E5%BA%93%E6%96%B9%E8%A8%80
             -->
-        <package name="com.atguigu.pojo"/>
     </typeAliases>
 
     <plugins>

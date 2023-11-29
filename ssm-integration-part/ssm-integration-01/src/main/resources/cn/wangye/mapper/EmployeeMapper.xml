@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace等于mapper接口类的全限定名,这样实现对应。 一个mapper标签对应着一个mapper接口 -->
+<mapper namespace="cn.wangye.mapper.EmployeeMapper">
+
+    <select id="queryEmployeeAll" resultType="employee">
+        select * from t_emp;
+    </select>
+
+
+</mapper>

@@ -9,25 +9,83 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
-        <module>ssm-springMVC-quicklyTest01</module>
+        <module>springmvc-base-quick-01</module>
+        <module>springmvc-base-input-02</module>
+        <module>springmvc-base-output-03</module>
+        <module>springmvc-base-restful-04</module>
+        <module>springmvc-high-other-05</module>
+        <module>springmvc-high-other-06</module>
+        <module>springmvc-high-other-06</module>
     </modules>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!--        一些版本号的配置-->
+        <spring.version>6.0.6</spring.version>
+        <servlet.api>9.1.0</servlet.api>
     </properties>
 
 
-<!-- 我们需要什么依赖 -->
+    <!-- 我们需要什么依赖 -->
 
     <!--SpringWebMVC
-        web-servlet
-        ioc-spring-context
-        mvc-spring-webmvc
-
+        web : servlet
+        ioc : spring-context
+        mvc : spring-webmvc
     -->
     <dependencies>
+        <!--        SpringIoc容器的相关依赖-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <!--       web的相关依赖-->
+        <!--        在pom.xml中导入Jakarta EE Web API 的依赖-->
+        <!--     在Spring Web MVC6中，ServletAPI迁移到了JakartaEEAPI中，因此配置DispatcherServlet时，需要使用
+           Jakarta EE 提供的相应类库和命名空间。-->
+        <dependency>
+            <groupId>jakarta.platform</groupId>
+            <artifactId>jakarta.jakartaee-web-api</artifactId>
+            <version>${servlet.api}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.30</version>
+        </dependency>
+
+        <!--帮助java处理json的依赖，解决前端向后端传递json数据时的415不支持媒体类型的异常-->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.15.0</version>
+        </dependency>
+
+
+
+        <dependency>
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>8.0.0.Final</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator-annotation-processor</artifactId>
+            <version>8.0.0.Final</version>
+        </dependency>
+
 
     </dependencies>
 

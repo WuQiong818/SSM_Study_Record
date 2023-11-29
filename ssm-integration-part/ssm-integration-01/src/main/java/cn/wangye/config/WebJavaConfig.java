@@ -14,7 +14,7 @@ import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandl
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 
 @Configuration
-@ComponentScan({"cn.wangye.controller","cn.wangye.exceptionHandler"})
+@ComponentScan({"cn.wangye.controller"})//,"cn.wangye.exceptionHandler"
 @EnableWebMvc//这个注解做了三件事情 :配置handlerMapping和handlerAdapter、处理json数据的返回
 //handlerMapping--> RequestMappingHandlerMapping
 //handlerAdapt --> RequestAdaptHandlerMapping
