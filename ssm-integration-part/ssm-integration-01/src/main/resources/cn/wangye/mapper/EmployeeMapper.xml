@@ -5,10 +5,17 @@
 
 <!-- namespace等于mapper接口类的全限定名,这样实现对应。 一个mapper标签对应着一个mapper接口 -->
 <mapper namespace="cn.wangye.mapper.EmployeeMapper">
-
+    <!--    List<Employee> queryEmployeeAll();-->
     <select id="queryEmployeeAll" resultType="employee">
         select * from t_emp;
     </select>
 
+
+    <!--	org.springframework.beans.factory.UnsatisfiedDependencyException:
+    Error creating bean with name 'empServiceImpl': Unsatisfied dependency
+    expressed through field 'employeeMapper': No qualifying bean of type
+    'cn.wangye.mapper.EmployeeMapper' available: expected at least 1 bean
+    which qualifies as autowire candidate. Dependency annotations:
+    {@org.springframework.beans.factory.annotation.Autowired(required=true)}-->
 
 </mapper>

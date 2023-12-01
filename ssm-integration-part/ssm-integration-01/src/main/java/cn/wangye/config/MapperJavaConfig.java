@@ -1,18 +1,15 @@
 package cn.wangye.config;
 
-import com.alibaba.druid.pool.DruidDataSource;
-import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.mapper.MapperScannerConfigurer;
-import org.springframework.beans.factory.annotation.Value;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
+
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 
 import javax.sql.DataSource;
-import javax.xml.crypto.Data;
 
 @Configuration
 public class MapperJavaConfig {
@@ -20,6 +17,7 @@ public class MapperJavaConfig {
     //    将sqlSessionFactoryBean加入到ioc容器当中
 //    mybatis -> sqlSessionFactoryBean[ioc] -> getObject() -> sqlSessionFactory
 //    方法一：外部指定mybatis-config.xml[mybatis的配置 除了连接池和mapper的指定]
+    @Bean
     public SqlSessionFactoryBean sqlSessionFactoryBean(DataSource dataSource) {
         //实例化sqlSessionFactoryBean工厂
         SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
@@ -37,10 +35,11 @@ public class MapperJavaConfig {
 //    将Mapper对象配置到ioc容器当中
 //    Mapper代理兑现的factoryBean -> 指定一个包 -> mapper接口 -》 sqlSessionFactory -> sqlSession
 //    -> getMapper -> mapper代理对象[ioc]
+    @Bean
     public MapperScannerConfigurer mapperScannerConfigurer(){
         MapperScannerConfigurer mapperScannerConfigurer = new MapperScannerConfigurer();
 //        配置Mapper接口和xml文件所在的共同包
-        mapperScannerConfigurer.setBasePackage("cn.wangye.mapper");
+       mapperScannerConfigurer.setBasePackage("cn.wangye.mapper");
         return mapperScannerConfigurer;
 
     }

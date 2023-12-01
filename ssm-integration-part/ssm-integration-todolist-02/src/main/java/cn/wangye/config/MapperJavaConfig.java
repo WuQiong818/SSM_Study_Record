@@ -14,20 +14,29 @@ import java.util.Properties;
 @Configuration
 public class MapperJavaConfig {
     @Bean
-    public SqlSessionFactoryBean sqlSessionFactoryBean(DataSource dataSource){
+//    sqlSessionFactory加入ioc容器
+//    mybatis->sqlSessionFactoryBean[ioc] -> getObject() -> sqlSessionFactory
+    public SqlSessionFactoryBean sqlSessionFactoryBean(DataSource dataSource) {
         SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
+//        指定连接池对象
         sqlSessionFactoryBean.setDataSource(dataSource);
 
+        //指定原先外部配置的mybatis-config.xml中的配置文件
         org.apache.ibatis.session.Configuration configuration = new org.apache.ibatis.session.Configuration();
         configuration.setMapUnderscoreToCamelCase(true);
         configuration.setLogImpl(Slf4jImpl.class);
         configuration.setAutoMappingBehavior(AutoMappingBehavior.FULL);
+        sqlSessionFactoryBean.setConfiguration(configuration);
+
         sqlSessionFactoryBean.setTypeAliasesPackage("cn.wangye.pojo");
+//        sqlSessionFactoryBean.setTypeAliases();
 
         PageInterceptor pageInterceptor = new PageInterceptor();
         Properties properties = new Properties();
-        properties.setProperty("helperDialect","mysql");
+        properties.setProperty("helperDialect", "mysql");
         pageInterceptor.setProperties(properties);
+        sqlSessionFactoryBean.addPlugins(pageInterceptor);
+
         return sqlSessionFactoryBean;
     }
 
@@ -38,5 +47,6 @@ public class MapperJavaConfig {
         mapperScannerConfigurer.setBasePackage("cn.wangye.mapper");
         return mapperScannerConfigurer;
     }
+
 
 }

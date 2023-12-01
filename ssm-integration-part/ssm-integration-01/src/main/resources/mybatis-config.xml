@@ -14,7 +14,7 @@
 
     <typeAliases>
         <!-- 给实体类起别名 -->
-        <package name="com.atguigu.pojo"/>
+<!--        <package name="cn.wangye.pojo"/>-->
     </typeAliases>
 
     <plugins>

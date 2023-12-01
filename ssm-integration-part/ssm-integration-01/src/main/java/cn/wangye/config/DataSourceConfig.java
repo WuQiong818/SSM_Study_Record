@@ -28,7 +28,7 @@ public class DataSourceConfig {
     public DataSource dataSource() {
         DruidDataSource dataSource = new DruidDataSource();
         dataSource.setUsername(user);
-        dataSource.setUsername(password);
+        dataSource.setPassword(password);
         dataSource.setUrl(url);
         dataSource.setDriverClassName(driver);
         return dataSource;
