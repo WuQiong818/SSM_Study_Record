@@ -1,0 +1,9 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /boot
+
+spring:
+  web:
+    resources:
+      static-locations: classpath:/webapp

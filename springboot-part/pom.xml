@@ -10,6 +10,9 @@
     <packaging>pom</packaging>
     <modules>
         <module>springboot-quick-01</module>
+        <module>springboot-properties-02</module>
+        <module>springboot-mvc-03</module>
+        <module>springboot-druid-04</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -27,8 +30,16 @@
 
     <dependencies>
         <dependency>
+<!--            在父工程中应该写明了依赖的版本号，所以这里我们不需要书写版本号-->
+<!--       依赖项集合     -->
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.30</version>
         </dependency>
     </dependencies>
 </project>
