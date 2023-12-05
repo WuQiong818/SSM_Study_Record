@@ -13,6 +13,7 @@
         <module>springboot-properties-02</module>
         <module>springboot-mvc-03</module>
         <module>springboot-druid-04</module>
+        <module>springboot-mybatis-05</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

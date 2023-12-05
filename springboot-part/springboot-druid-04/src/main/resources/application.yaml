@@ -36,6 +36,7 @@ spring:
       # 合并多个DruidDataSource的监控数据
       use-global-data-source-stat: true
 
-logging:
-  level:
-    root: debug
+#这玩意是什么，竟然可以让程序启动不起来
+#logging:
+#  level:
+#    root: debug
