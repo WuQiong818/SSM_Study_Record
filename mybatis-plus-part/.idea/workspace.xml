@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="66152008-ade8-4710-8c4d-b49ee57d46db" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/mybatis-plus-crudService03/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mybatis-plus-crudService03/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mybatis-plus-crudService03/src/main/java/cn/wangye/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mybatis-plus-crudService03/src/main/java/cn/wangye/mapper/mapper/UserMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mybatis-plus-crudService03/src/main/java/cn/wangye/pojo/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mybatis-plus-crudService03/src/main/java/cn/wangye/service/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mybatis-plus-crudService03/src/main/java/cn/wangye/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssm-spring-part/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ssm-spring-part/pom.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="D:\SoftwareDevelop\apache-maven-3.6.1-bin\mvn_repo" />
+        <option name="mavenHome" value="$PROJECT_DIR$/../../../../apache-maven-3.6.1-bin" />
+        <option name="useMavenConfig" value="true" />
+        <option name="userSettingsFile" value="D:\SoftwareDevelop\apache-maven-3.6.1-bin\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="MavenRunner">
+    <option name="jreName" value="11" />
+  </component>
+  <component name="ProjectId" id="2Z9z6tWuKuj8uIk58z0tCaMBmWW" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "master",
+    "jdk.selected.JAVA_MODULE": "corretto-17",
+    "last_opened_file_path": "D:/SoftwareDevelop/Idea/IdeaProjects/SSM",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "onboarding.tips.debug.path": "D:/SoftwareDevelop/Idea/IdeaProjects/SSM/mybatis-plus-part/mybatis-plus-crudService03/src/main/java/cn/wangye/Main.java",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.importing",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\SoftwareDevelop\Idea\IdeaProjects\SSM\mybatis-plus-part\mybatis-plus-crudService03\src\main\java\cn\wangye\mapper" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="cn.wangye.pojo" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.Main">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="mybatis-plus-partnew" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="mybatis-plus-partnew" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="mybatis-plus-quick01" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="cn.wangye.Main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="mybaits-plus-crudmapper02" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="cn.wangye.Main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="66152008-ade8-4710-8c4d-b49ee57d46db" name="Changes" comment="" />
+      <created>1680528491274</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1680528491274</updated>
+      <workItem from="1701848996020" duration="1308000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+</project>
