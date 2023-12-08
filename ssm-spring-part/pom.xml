@@ -17,6 +17,7 @@
         <module>spring-ioc-fullyAnnotation</module>
         <module>spring-aop-annotation</module>
         <module>spring-tx-01</module>
+        <module>spring-aop-annotation-restudy</module>
     </modules>
 
     <properties>
