@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.wangye.mapper.HeadlineMapper">
+
+    <resultMap id="BaseResultMap" type="cn.wangye.pojo.Headline">
+            <id property="hid" column="hid" jdbcType="INTEGER"/>
+            <result property="title" column="title" jdbcType="VARCHAR"/>
+            <result property="article" column="article" jdbcType="VARCHAR"/>
+            <result property="type" column="type" jdbcType="INTEGER"/>
+            <result property="publisher" column="publisher" jdbcType="INTEGER"/>
+            <result property="pageViews" column="page_views" jdbcType="INTEGER"/>
+            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+            <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+            <result property="version" column="version" jdbcType="INTEGER"/>
+            <result property="isDeleted" column="is_deleted" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        hid,title,article,
+        type,publisher,page_views,
+        create_time,update_time,version,
+        is_deleted
+    </sql>
+
+
+<!--    Map selectDetailMap(Integer hid); 注意，看看mysql会自动将蛇形命名转化为驼峰命名吗？ 这里仅仅是执行sql语句，并不会帮助我们完成蛇形映射-->
+    <select id="selectDetailMap" resultType="map">
+        select hid,title,article,type,page_views pageViews,publisher,news_headline.version version,TIMESTAMPDIFF(HOUR,create_time,now()) pastHours,
+               news_type.tname typeName,news_user.username author from news_headline
+                    left join news_type on news_headline.type = news_type.tid
+                    left join news_user on news_headline.publisher = news_user.uid where hid =#{hid};
+    </select>
+
+
+<!--    IPage<Headline> mySelectPage(IPage<Headline> page, PortalVo portalVo);-->
+<select id="mySelectPage" resultType="headline">
+    select hid,title,type,page_views,TIMESTAMPDIFF(HOUR,create_time,now()),publisher from news_headline
+        where is_deleted = 0
+    <if test="portalVo.keyWords != null and portalVo.keyWords.length()>0">
+        and title like concat('%',#{portalVo.keyWords},'%')
+    </if>
+    <if test="portalVo.type != 0">
+        and type = #{portalVo.type}
+    </if>
+</select>
+<!--    select hid,title,article,type,page_views,publisher,
+    TIMESTAMPDIFF(HOUR,create_time,now()) pastHours,news_type.tname type_name,
+    news_user.username author from news_headline
+        left join news_type on news_headline.type = news_type.tid
+        left join news_user on news_headline.publisher = news_user.uid and hid =?;
+        left join news_user on news_headline.publisher = news_user.uid;-->
+
+</mapper>

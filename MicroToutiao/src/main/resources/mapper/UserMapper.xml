@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.wangye.mapper.UserMapper">
+
+    <resultMap id="BaseResultMap" type="cn.wangye.pojo.User">
+            <id property="uid" column="uid" jdbcType="INTEGER"/>
+            <result property="username" column="username" jdbcType="VARCHAR"/>
+            <result property="userPwd" column="user_pwd" jdbcType="VARCHAR"/>
+            <result property="nickName" column="nick_name" jdbcType="VARCHAR"/>
+            <result property="version" column="version" jdbcType="INTEGER"/>
+            <result property="isDeleted" column="is_deleted" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        uid,username,user_pwd,
+        nick_name,version,is_deleted
+    </sql>
+    <select id="selectUidByUsernameAndUserPwd" resultMap="BaseResultMap">
+        select uid
+        from news_user
+        where username = #{username,jdbcType=VARCHAR}
+          AND user_pwd = #{userPwd,jdbcType=VARCHAR}
+    </select>
+
+<!--    根据用户名和密码去查询数据-->
+    <select id="selectAllByUsernameAndUserPwd" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from news_user
+        where
+        username = #{username,jdbcType=VARCHAR}
+        AND user_pwd = #{userPwd,jdbcType=VARCHAR}
+    </select>
+
+    <select id="selectUidByUsername" resultMap="BaseResultMap">
+        select uid
+        from news_user
+        where username = #{username,jdbcType=VARCHAR}
+    </select>
+
+</mapper>
