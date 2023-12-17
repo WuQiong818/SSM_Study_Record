@@ -23,6 +23,7 @@ public class UserCheckInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         String token = request.getHeader("token");
+        System.out.println("拦截了"+request.getServletPath());
         if (StringUtils.isEmpty(token) || jwtHelper.isExpiration(token)){
             Result result = Result.build(null, ResultCodeEnum.NOTLOGIN);
 //            这个应该是用来提醒用户的机制

@@ -13,6 +13,10 @@ spring:
       username: root
       password: 123456
       driver-class-name: com.mysql.cj.jdbc.Driver
+  web:
+    resources:
+      static-locations: classpath:/webapp #配置了默认会直接访问给文件下的所有静态资源，我们不需要加上第一层的路径
+
 
 
 # mybatis-plus的配置
@@ -25,8 +29,6 @@ mybatis-plus:
       table-prefix: news_ # 设置表的前缀
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-
-
 
 #自定义的jwt数据验证的相关配置
 jwt:
